@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        form {
+    max-width: 500px;
+    margin: 30px auto;
+}
+
+input, select {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+        body, th,td{
+            border: 1px solid gray;
+            padding : 10px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <!-- Dynamic contents -->
+    {% block content %}
+
+    {% endblock %}
+    <footer>
+        <br>
+    <p>Copy Right @ 2026</p>
+    </footer>
+</body>
+</html>
+

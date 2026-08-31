@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { InventoryDashboardAPI, OrdersAPI } from "../api/endpoints";
+import { InventoryDashboardAPI } from "../api/endpoints";
 import { apiErrorMessage } from "../api/client";
 import { LoadingRow, Banner, Stamp, EmptyState } from "../components/Kit";
 import { IconArrowUpRight, IconClipboard } from "../components/Icons";
@@ -14,24 +14,38 @@ export default function Dashboard() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    let alive = true;
-    setLoading(true);
-    Promise.all([
-      InventoryDashboardAPI.summary(),
-      OrdersAPI.list({ page_size: 6, ordering: "-created_at" }),
-    ])
-      .then(([dash, ord]) => {
-        if (!alive) return;
-        setData(dash.data);
-        setOrders(ord.data.results || ord.data || []);
-      })
-      .catch((err) => alive && setError(apiErrorMessage(err, "Couldn't load the dashboard.")))
-      .finally(() => alive && setLoading(false));
-    return () => {
-      alive = false;
-    };
-  }, []);
+useEffect(() => {
+  let alive = true;
+
+  setLoading(true);
+
+  InventoryDashboardAPI.summary()
+    .then((dash) => {
+      if (!alive) return;
+
+      setData(dash.data);
+      setOrders([]);
+    })
+    .catch((err) => {
+      if (alive) {
+        setError(
+          apiErrorMessage(
+            err,
+            "Couldn't load the dashboard."
+          )
+        );
+      }
+    })
+    .finally(() => {
+      if (alive) {
+        setLoading(false);
+      }
+    });
+
+  return () => {
+    alive = false;
+  };
+}, []);
 
   if (loading) return <LoadingRow label="Loading manifest…" />;
   if (error) return <Banner type="error">{error}</Banner>;

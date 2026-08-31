@@ -1,10 +1,9 @@
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { ToastProvider } from "./context/ToastContext";
-import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 
-import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import Categories from "./pages/Categories";
@@ -23,15 +22,8 @@ export default function App() {
       <AuthProvider>
         <ToastProvider>
           <Routes>
-            <Route path="/login" element={<Login />} />
+            <Route element={<Layout />}>
 
-            <Route
-              element={
-                <ProtectedRoute>
-                  <Layout />
-                </ProtectedRoute>
-              }
-            >
               <Route path="/" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
               <Route path="/categories" element={<Categories />} />
@@ -43,12 +35,14 @@ export default function App() {
               <Route path="/orders/:id" element={<OrderDetail />} />
               <Route path="/reports" element={<ReportsIndex />} />
               <Route path="/reports/:slug" element={<ReportView />} />
-            </Route>
 
-            <Route path="*" element={<Dashboard />} />
+              <Route path="*" element={<Dashboard />} />
+
+            </Route>
           </Routes>
         </ToastProvider>
       </AuthProvider>
     </BrowserRouter>
   );
 }
+

@@ -1,0 +1,40 @@
+:root {
+  /* ---- Color: "freight manifest" palette ---- */
+  --ink: #0F1520;          /* spine / topbar / darkest text */
+  --ink-soft: #1B2432;      /* raised dark surfaces */
+  --canvas: #EEF0F4;        /* app background, cool paper-gray (not cream) */
+  --panel: #FFFFFF;         /* card surfaces */
+  --line: #DEE2E9;          /* hairline borders */
+  --line-strong: #C4CAD4;
+
+  --text-primary: #10151F;
+  --text-secondary: #59626F;
+  --text-muted: #8891A0;
+  --text-on-dark: #E7EAF0;
+  --text-on-dark-muted: #8D96A8;
+
+  --freight-blue: #2C5FE0;   /* primary action / links / active */
+  --freight-blue-dim: #E8EDFC;
+  --signal-amber: #C97A0C;   /* low-stock / pending warnings */
+  --signal-amber-dim: #FBEDD8;
+  --alert-red: #C1392B;      /* out of stock / cancel / danger */
+  --alert-red-dim: #FBE7E4;
+  --dock-green: #1F7A4D;     /* paid / delivered / confirmed */
+  --dock-green-dim: #E4F3EA;
+  --slate-tag: #4B5768;      /* neutral tags */
+  --slate-tag-dim: #E7E9EE;
+
+  /* ---- Type ---- */
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* ---- Layout ---- */
+  --sidebar-w: 240px;
+  --topbar-h: 64px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --shadow-panel: 0 1px 2px rgba(15, 21, 32, 0.04), 0 1px 0 rgba(15, 21, 32, 0.03);
+  --shadow-pop: 0 12px 32px rgba(15, 21, 32, 0.16), 0 2px 8px rgba(15, 21, 32, 0.08);
+}

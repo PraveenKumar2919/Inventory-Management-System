@@ -1,0 +1,374 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | InventoryPro{% endblock %}
+
+{% block header %}
+Inventory Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="page-title">
+    <h1>Dashboard</h1>
+    <p>Overview of your inventory, orders and sales.</p>
+</div>
+
+<div class="dashboard-grid">
+
+    <div class="stat-card">
+        <div class="stat-icon">📦</div>
+        <div>
+            <p>Total Products</p>
+            <h2 id="total-products">0</h2>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div>
+            <p>Total Customers</p>
+            <h2 id="total-customers">0</h2>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🛒</div>
+        <div>
+            <p>Total Orders</p>
+            <h2 id="total-orders">0</h2>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">💰</div>
+        <div>
+            <p>Total Sales</p>
+            <h2 id="total-sales">₹0.00</h2>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">⚠️</div>
+        <div>
+            <p>Low Stock</p>
+            <h2 id="low-stock">0</h2>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🚫</div>
+        <div>
+            <p>Out of Stock</p>
+            <h2 id="out-of-stock">0</h2>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="dashboard-sections">
+
+    <!-- ORDER STATUS -->
+
+    <div class="dashboard-box">
+
+        <h3>Order Status</h3>
+
+        <div class="status-row">
+            <span>Pending</span>
+            <strong id="pending-orders">0</strong>
+        </div>
+
+        <div class="status-row">
+            <span>Confirmed</span>
+            <strong id="confirmed-orders">0</strong>
+        </div>
+
+        <div class="status-row">
+            <span>Processing</span>
+            <strong id="processing-orders">0</strong>
+        </div>
+
+        <div class="status-row">
+            <span>Shipped</span>
+            <strong id="shipped-orders">0</strong>
+        </div>
+
+        <div class="status-row">
+            <span>Delivered</span>
+            <strong id="delivered-orders">0</strong>
+        </div>
+
+        <div class="status-row">
+            <span>Cancelled</span>
+            <strong id="cancelled-orders">0</strong>
+        </div>
+
+    </div>
+
+
+    <!-- SALES SUMMARY -->
+
+    <div class="dashboard-box">
+
+        <h3>Sales Summary</h3>
+
+        <div class="status-row">
+            <span>Total Sales</span>
+            <strong id="summary-total-sales">₹0.00</strong>
+        </div>
+
+        <div class="status-row">
+            <span>Today's Sales</span>
+            <strong id="today-sales">₹0.00</strong>
+        </div>
+
+        <div class="status-row">
+            <span>This Month</span>
+            <strong id="monthly-sales">₹0.00</strong>
+        </div>
+
+        <hr>
+
+        <div class="inventory-value">
+            <span>Total Stock</span>
+            <strong id="total-stock">0</strong>
+        </div>
+
+        <div class="inventory-value">
+            <span>Inventory Value</span>
+            <strong id="inventory-value">₹0.00</strong>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <!-- PAYMENT SUMMARY -->
+
+<div class="dashboard-box">
+
+    <h3>Payment Summary</h3>
+
+    <div class="status-row">
+        <span>💳 Paid</span>
+        <strong id="paid-payments">0</strong>
+    </div>
+
+    <div class="status-row">
+        <span>⏳ Pending</span>
+        <strong id="pending-payments">0</strong>
+    </div>
+
+    <div class="status-row">
+        <span>❌ Failed</span>
+        <strong id="failed-payments">0</strong>
+    </div>
+
+    <div class="status-row">
+        <span>🔄 Refunded</span>
+        <strong id="refunded-payments">0</strong>
+    </div>
+
+</div>
+<style>
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.stat-icon {
+    font-size: 32px;
+}
+
+.stat-card p {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.stat-card h2 {
+    font-size: 25px;
+    margin: 0;
+}
+
+.dashboard-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.dashboard-box {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.dashboard-box h3 {
+    margin-bottom: 18px;
+}
+
+.status-row,
+.inventory-value {
+    display: flex;
+    justify-content: space-between;
+    padding: 11px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.inventory-value {
+    margin-top: 12px;
+    border: none;
+}
+
+@media (max-width: 900px) {
+
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-sections {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script>
+
+async function loadDashboard() {
+
+    try {
+
+        const token = localStorage.getItem("access_token");
+
+        const response = await fetch("/api/dashboard/", {
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error("Dashboard API failed: " + response.status);
+        }
+
+        const data = await response.json();
+
+        // Products
+        document.getElementById("total-products").textContent =
+            data.products?.total ?? 0;
+
+        document.getElementById("low-stock").textContent =
+            data.products?.low_stock ?? 0;
+
+        document.getElementById("out-of-stock").textContent =
+            data.products?.out_of_stock ?? 0;
+
+
+        // Customers
+        document.getElementById("total-customers").textContent =
+            data.customers?.total ?? 0;
+
+
+        // Orders
+        document.getElementById("total-orders").textContent =
+            data.orders?.total ?? 0;
+
+        document.getElementById("pending-orders").textContent =
+            data.orders?.pending ?? 0;
+
+        document.getElementById("confirmed-orders").textContent =
+            data.orders?.confirmed ?? 0;
+
+        document.getElementById("processing-orders").textContent =
+            data.orders?.processing ?? 0;
+
+        document.getElementById("shipped-orders").textContent =
+            data.orders?.shipped ?? 0;
+
+        document.getElementById("delivered-orders").textContent =
+            data.orders?.delivered ?? 0;
+
+        document.getElementById("cancelled-orders").textContent =
+            data.orders?.cancelled ?? 0;
+
+
+        // Sales
+        document.getElementById("total-sales").textContent =
+            "₹" + Number(data.sales?.total ?? 0).toLocaleString("en-IN");
+
+        document.getElementById("sales-summary-total").textContent =
+            "₹" + Number(data.sales?.total ?? 0).toLocaleString("en-IN");
+
+        document.getElementById("today-sales").textContent =
+            "₹" + Number(data.sales?.today ?? 0).toLocaleString("en-IN");
+
+        document.getElementById("month-sales").textContent =
+            "₹" + Number(data.sales?.this_month ?? 0).toLocaleString("en-IN");
+
+
+        // Inventory
+        document.getElementById("total-stock").textContent =
+            data.inventory?.total_stock ?? 0;
+
+        document.getElementById("inventory-value").textContent =
+            "₹" + Number(
+                data.inventory?.total_stock_value ?? 0
+            ).toLocaleString("en-IN");
+
+
+        // Payments (temporary default values)
+        document.getElementById("paid-orders").textContent =
+            data.payments?.paid ?? 0;
+
+        document.getElementById("pending-payments").textContent =
+            data.payments?.pending ?? 0;
+
+        document.getElementById("failed-payments").textContent =
+            data.payments?.failed ?? 0;
+
+        document.getElementById("refunded-orders").textContent =
+            data.payments?.refunded ?? 0;
+
+
+    } catch (error) {
+
+        console.error("Dashboard Error:", error);
+
+    }
+
+}
+
+loadDashboard();
+
+</script>
+{% endblock %}

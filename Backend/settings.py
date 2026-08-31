@@ -21,24 +21,30 @@ SECRET_KEY = (
     'django-insecure-wm6ja!fp^1frhx4^y08v0egc&&$1#+=0*+d%+p4ax3dk*ajku9'
 )
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "inventory-management-system-tfeo.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # =========================================================
-# CORS — allow the React frontend (Vite dev server) to call
-# this API from a different origin during development.
+# CORS
 # =========================================================
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://inventory-management-system-tfeo.onrender.com",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://inventory-management-system-tfeo.onrender.com",
+]
 # =========================================================
 # APPLICATIONS
 # =========================================================

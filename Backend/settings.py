@@ -28,14 +28,14 @@ DEBUG = os.environ.get("DJANGO_DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = os.environ.get(
     "DJANGO_ALLOWED_HOSTS",
-    "127.0.0.1,localhost"
+    "127.0.0.1,localhost,inventory-management-system-tfeo.onrender.com"
 ).split(",")
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://inventory-management-frontend-vert-psi.vercel.app",
 ]
-
 CORS_ALLOW_CREDENTIALS = True
 
 

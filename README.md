@@ -1,224 +1,132 @@
-\# Inventory Management System
+# 📦 Inventory Management System
 
+A full-stack **Inventory Management System** built with **Django REST Framework** and **React (Vite)**.
 
+The application provides inventory management, stock tracking, customer and order management, sales analytics, JWT authentication, and RESTful APIs with Swagger documentation.
 
-A full-stack inventory, order, and sales-reporting platform built with \*\*Django REST Framework\*\* on the backend and \*\*React (Vite)\*\* on the frontend. Includes JWT authentication, stock tracking, order management, and 25+ analytics/reporting endpoints.
+## 🚀 Live Demo
 
+**Frontend:**  
+https://inventory-management-system-henna-xi.vercel.app
 
+**API Documentation:**  
+https://inventory-management-system-lgz8.onrender.com/api/docs/
 
-\*\*Live demo:\*\* \[inventory-management-system-henna-xi.vercel.app](https://inventory-management-system-henna-xi.vercel.app)
+> **Note:** The backend is hosted on Render's free tier. The first request after a period of inactivity may take a few seconds while the service wakes up.
 
-\*\*API docs (Swagger):\*\* \[inventory-management-system-lgz8.onrender.com/api/docs/](https://inventory-management-system-lgz8.onrender.com/api/docs/)
+---
 
+## ✨ Features
 
+### 🔐 Authentication
+- JWT-based authentication
+- Access and refresh token support
+- Protected frontend routes
+- Secure API access
 
-> Note: the backend runs on Render's free tier, so the first request after inactivity may take 10-30 seconds to wake up.
+### 📦 Inventory Management
+- Product management
+- Category management
+- Supplier management
+- Stock In / Stock Out
+- Low-stock alerts
+- Out-of-stock tracking
+- Inventory transaction history
 
+### 🛒 Order Management
+- Customer management
+- Order creation and management
+- Order status tracking
+- Payment status tracking
+- Order cancellation
 
+### 📊 Reports & Analytics
+- Sales reports
+- Revenue analysis
+- Profit analysis
+- Inventory valuation
+- Customer performance
+- Supplier performance
+- Stock analytics
+- 25+ reporting and analytics endpoints
 
-\---
+### 📚 API Documentation
+- RESTful API architecture
+- OpenAPI schema
+- Swagger UI
+- Request and response documentation
 
+---
 
+## 🛠️ Tech Stack
 
-\## Features
+### Backend
 
+- Python
+- Django 5.2
+- Django REST Framework
+- SimpleJWT
+- django-filter
+- drf-spectacular
+- SQLite for development
+- PostgreSQL-ready
+- Gunicorn
+- Render
 
+### Frontend
 
-\- \*\*Authentication\*\* — JWT-based login with access/refresh token flow and protected frontend routes
+- React 19
+- Vite
+- React Router
+- Axios
+- Recharts
+- Vercel
 
-\- \*\*Inventory management\*\* — categories, suppliers, products, stock in/out, low-stock \& out-of-stock alerts
+### Development Tools
 
-\- \*\*Order management\*\* — customers, orders, order status \& payment status tracking, order cancellation
+- Git
+- GitHub
+- VS Code / PyCharm
+- Postman
+- Swagger UI
 
-\- \*\*Reporting \& analytics\*\* — sales, revenue, profit, inventory valuation, customer/supplier performance, and more (25+ report endpoints)
+---
 
-\- \*\*API documentation\*\* — auto-generated OpenAPI schema with Swagger UI (via `drf-spectacular`)
+## 🏗️ Project Structure
 
-
-
-\## Tech Stack
-
-
-
-\*\*Backend\*\*
-
-\- Django 5.2, Django REST Framework
-
-\- SimpleJWT (authentication)
-
-\- django-filter, drf-spectacular
-
-\- SQLite (dev) / PostgreSQL-ready
-
-\- Deployed on \[Render](https://render.com)
-
-
-
-\*\*Frontend\*\*
-
-\- React 19 + Vite
-
-\- React Router
-
-\- Axios
-
-\- Recharts (data visualization)
-
-\- Deployed on \[Vercel](https://vercel.com)
-
-
-
-\## Project Structure
-
-
-
-```
-
+```text
 PythonProject/
-
-├── Backend/            # Django project settings, root URLs
-
-├── Inventary/          # Products, categories, suppliers, stock transactions
-
-├── Ordermanagement/    # Customers, orders, and reports
-
-├── frontend/           # React (Vite) single-page app
-
-│   └── src/
-
-│       ├── api/        # Axios client \& endpoints
-
-│       ├── context/    # Auth \& toast context providers
-
-│       ├── pages/       # Route-level pages
-
-│       └── components/  # Shared UI components
-
+│
+├── Backend/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── ...
+│
+├── Inventary/
+│   ├── models.py
+│   ├── serializers.py
+│   ├── views.py
+│   ├── urls.py
+│   └── ...
+│
+├── Ordermanagement/
+│   ├── models.py
+│   ├── serializers.py
+│   ├── views.py
+│   ├── urls.py
+│   └── ...
+│
+├── frontend/
+│   ├── src/
+│   │   ├── api/
+│   │   ├── components/
+│   │   ├── context/
+│   │   └── pages/
+│   │
+│   ├── package.json
+│   └── vite.config.js
+│
 ├── manage.py
-
-└── requirements.txt
-
-```
-
-
-
-\## API Overview
-
-
-
-| Area | Base path |
-
-|---|---|
-
-| Auth (JWT) | `/api/auth/token/`, `/api/auth/token/refresh/` |
-
-| Inventory | `/api/categories/`, `/api/suppliers/`, `/api/products/`, `/api/transactions/`, `/api/stock/in/`, `/api/stock/out/` |
-
-| Orders | `/orders/api/customers/`, `/orders/api/orders/` |
-
-| Reports | `/orders/api/reports/...` (sales, revenue, profit, inventory valuation, customer/supplier performance, etc.) |
-
-| Docs | `/api/docs/` (Swagger UI), `/api/schema/` (OpenAPI schema) |
-
-
-
-Full endpoint list with request/response schemas is available via Swagger.
-
-
-
-\## Getting Started (Local Setup)
-
-
-
-\### Backend
-
-
-
-```bash
-
-\# from the project root
-
-python -m venv .venv
-
-.venv\\Scripts\\activate        # Windows
-
-\# source .venv/bin/activate   # macOS/Linux
-
-
-
-pip install -r requirements.txt
-
-python manage.py migrate
-
-python manage.py createsuperuser
-
-python manage.py runserver
-
-```
-
-
-
-Backend runs at `http://127.0.0.1:8000`.
-
-
-
-\### Frontend
-
-
-
-```bash
-
-cd frontend
-
-npm install
-
-cp .env.example .env      # set VITE\_API\_BASE\_URL if needed
-
-npm run dev
-
-```
-
-
-
-Frontend runs at `http://127.0.0.1:5173`.
-
-
-
-\## Environment Variables
-
-
-
-\*\*Backend\*\* (`Backend/settings.py` / environment)
-
-\- `DEBUG`
-
-\- `ALLOWED\_HOSTS`
-
-\- `CORS\_ALLOWED\_ORIGINS`, `CSRF\_TRUSTED\_ORIGINS`
-
-
-
-\*\*Frontend\*\* (`frontend/.env`)
-
-\- `VITE\_API\_BASE\_URL` — base URL of the Django backend (e.g. `http://127.0.0.1:8000` locally, or the Render URL in production)
-
-
-
-\## Deployment
-
-
-
-\- \*\*Backend\*\* is deployed on Render as a Python web service (`gunicorn Backend.wsgi`)
-
-\- \*\*Frontend\*\* is deployed on Vercel with root directory set to `frontend/`
-
-
-
-\## Author
-
-
-
-\*\*Praveen Kumar\*\*
-
-GitHub: \[@PraveenKumar2919](https://github.com/PraveenKumar2919)
-
+├── requirements.txt
+└── README.md

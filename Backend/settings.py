@@ -24,7 +24,7 @@ SECRET_KEY = (
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "inventory-management-system-tfeo.onrender.com",
+    "inventory-management-system-lgz8.onrender.com",
     "localhost",
     "127.0.0.1",
 ]
@@ -37,13 +37,13 @@ ALLOWED_HOSTS = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://inventory-management-system-tfeo.onrender.com",
+    "https://inventory-management-system-lgz8.onrender.com",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://inventory-management-system-tfeo.onrender.com",
+    "https://inventory-management-system-lgz8.onrender.com",
 ]
 # =========================================================
 # APPLICATIONS

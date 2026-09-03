@@ -10,9 +10,13 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-
+from django.http import JsonResponse
+def root_view(request):
+    return JsonResponse({"status": "ok", "message": "Inventory Management API is running"})
 
 urlpatterns = [
+
+    path("", root_view, name="root"),
 
     path(
         "admin/",
